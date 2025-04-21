@@ -9,13 +9,14 @@
 body {
   background-color: #e1e1fd;
   font-family: 'kanit', sans-serif;
+  color: #7f80ac;
 }
 
-h1{
-  color: #7BCDBA;
+h1 {
+  color: #6eb5a5;
 }
 h2 {
-  color: #d6a0f8;
+  color: #BD93D8;
 }
 
 #profile-pic {
@@ -23,48 +24,96 @@ h2 {
   border-radius: 50%;
 }
 
+.profile-section {
+  position: relative;
+  text-align: center;
+}
+
+.card-wrapper {
+  display: inline-block;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #cfcff0;
+  box-shadow: -6px 10px 42px -11px rgba(151,153,202,1);
+  position: relative;
+}
+
 .intro {
   display: flex;
   align-items: center;
+  margin: 1rem auto;
   gap: 5rem;
-  padding-top: 10rem;
 }
 .intro > * {
   flex: 1 1 50%;
+  min-width: 0;
 }
 .greeting-div {
   text-align: end;
 }
-.content p{
+
+.content p {
   text-align: center;
-  margin: 2rem;
-  padding: 0 10%
+  margin: 2rem auto;
+  padding: 0 1rem;
+  width: 90%;
+  max-width: 50rem;
 }
-.links{
+
+.links {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  margin-top: 2rem;
 }
-.links ul{
+.links ul {
   display: flex;
-  flex-direction: row;
   list-style: none;
   gap: 2rem;
 }
 .links a {
   text-decoration: none;
-  color: #7BCDBA;
+  color: #6eb5a5;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 850px) {
+  .card-wrapper {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+  }
 }
 
 @media (max-width: 600px) {
   #profile-pic {
     width: 10rem;
+    height: auto;
   }
-  .intro{
-    display: flex;
+  .intro {
     flex-direction: column;
-    align-items: center;  /* center both the greeting and the pic */
+    align-items: center;
     gap: 1rem;
   }
+}
+
+.custom-shape-divider-bottom-1745246096 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+.custom-shape-divider-bottom-1745246096 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 127px;
+}
+.custom-shape-divider-bottom-1745246096 .shape-fill {
+  fill: #9799CA;
 }
