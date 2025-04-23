@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+:root {
+  --shadow-color: 240deg 30% 42%;
+}
+
 body {
   background-color: #e1e1fd;
   font-family: 'kanit', sans-serif;
@@ -14,9 +18,21 @@ body {
 
 h1 {
   color: #6eb5a5;
+  font-size: 4em;
+  text-align: left;
+  padding-left: 4rem;
+  text-shadow:
+    1px 1px 2px hsl(var(--shadow-color) / 0.2),
+    2px 2px 4px hsl(var(--shadow-color) / 0.1);
 }
+
 h2 {
   color: #BD93D8;
+  opacity: .7;
+}
+
+p {
+  font-size: 1.2em;
 }
 
 #profile-pic {
@@ -27,16 +43,24 @@ h2 {
 .profile-section {
   position: relative;
   text-align: center;
+  perspective: 1000px;
 }
 
 .card-wrapper {
   display: inline-block;
-  margin: 5rem auto;
+  margin: 5rem auto 1.5rem auto;
   padding: 1.5rem;
   border-radius: 8px;
-  background: #cfcff0;
-  box-shadow: -6px 10px 42px -11px rgba(151,153,202,1);
+  background-color: #cfcff0;
+  box-shadow: 0.5px 0.5px 1px hsl(var(--shadow-color) / 0.05),
+    2px 2px 4.1px -0.1px hsl(var(--shadow-color) / 0.16),
+    4.1px 4.1px 8.3px -0.3px hsl(var(--shadow-color) / 0.27),
+    8.5px 8.6px 17.3px -0.4px hsl(var(--shadow-color) / 0.38);
   position: relative;
+}
+
+.card-wrapper.release {
+  transition: transform 0.3s ease-out;
 }
 
 .intro {
@@ -45,10 +69,12 @@ h2 {
   margin: 1rem auto;
   gap: 5rem;
 }
-.intro > * {
+
+.intro>* {
   flex: 1 1 50%;
   min-width: 0;
 }
+
 .greeting-div {
   text-align: end;
 }
@@ -57,7 +83,6 @@ h2 {
   text-align: center;
   margin: 2rem auto;
   padding: 0 1rem;
-  width: 90%;
   max-width: 50rem;
 }
 
@@ -66,24 +91,67 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  padding-bottom: 2rem;
 }
+
 .links ul {
   display: flex;
   list-style: none;
   gap: 2rem;
 }
+
 .links a {
   text-decoration: none;
   color: #6eb5a5;
   font-size: 1.5rem;
+  transition: color 0.3s ease-in-out;
+
 }
+
+.links a:hover {
+  color: #8fe6d1;
+}
+
+.info-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.info-card {
+  height: 15rem;
+  width: 20rem;
+  background-color: #cfcff0;
+  border-radius: 8px;
+  box-shadow: 0.5px 0.5px 1px hsl(var(--shadow-color) / 0.05),
+    2px 2px 4.1px -0.1px hsl(var(--shadow-color) / 0.16),
+    4.1px 4.1px 8.3px -0.3px hsl(var(--shadow-color) / 0.27),
+    8.5px 8.6px 17.3px -0.4px hsl(var(--shadow-color) / 0.38);
+  margin: 1.5rem 2.5rem;
+  overflow: hidden;
+}
+
+.info-card h3 {
+  font-size: 1.5em;
+  padding-top: 1rem;
+}
+
+.info-card p {
+  font-size: 1em;
+  padding: 1rem;
+}
+
 
 @media (max-width: 850px) {
   .card-wrapper {
     display: block;
     width: 100%;
     max-width: 600px;
+    padding-top: none;
+  }
+
+  .custom-shape-divider-bottom-1745246096 {
+    display: none;
   }
 }
 
@@ -92,11 +160,14 @@ h2 {
     width: 10rem;
     height: auto;
   }
+
   .intro {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
+
+
 }
 
 .custom-shape-divider-bottom-1745246096 {
@@ -104,16 +175,34 @@ h2 {
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 127px;
   overflow: hidden;
-  line-height: 0;
+  pointer-events: none;
   transform: rotate(180deg);
 }
+
 .custom-shape-divider-bottom-1745246096 svg {
-  position: relative;
   display: block;
-  width: calc(100% + 1.3px);
-  height: 127px;
+  width: 200%;
+  /* show both back-to-back copies */
+  height: 100%;
+  will-change: transform;
+  /* hint for GPU acceleration */
+  animation: waveScroll 60s linear infinite alternate;
 }
-.custom-shape-divider-bottom-1745246096 .shape-fill {
+
+@keyframes waveScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+    /* move left by exactly one half */
+  }
+}
+
+.shape-fill {
   fill: #9799CA;
+  /* your wave color */
 }
